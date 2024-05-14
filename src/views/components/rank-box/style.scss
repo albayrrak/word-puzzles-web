@@ -1,0 +1,47 @@
+@import "../../../assets/colors";
+
+.rank {
+    padding: 8px 16px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $primary-color;
+    height: 75px;
+    cursor: pointer;
+    color: $dark-primary-color;
+    margin-top: 8px;
+    border: 5px solid $secondary-color;
+
+
+    .rate {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50px;
+        height: 65px;
+        background: $secondary-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .information {
+        width: 100%;
+        padding-left: 55px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .icon {
+            height: 100%;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $success-color;
+        }
+
+    }
+}
