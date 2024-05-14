@@ -2,8 +2,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import "./style.scss"
 import { startGame } from '@/actions/api'
-import Loading from '@/views/components/loading'
-import Login from '@/views/components/start'
+import Loading from '@/views/sections/game/components/loading'
+import Play from '@/views/sections/game/components/play'
+import StartGame from './components/start'
 
 const GameSection = () => {
 
@@ -12,7 +13,7 @@ const GameSection = () => {
     const handleStart = async (userName: string) => {
         const gameScreen = document.querySelector(".game")
         const loadingScreenElement = document.querySelector(".game .loading")
-        const loginScreenElement = document.querySelector(".game .start")
+        const loginScreenElement = document.querySelector(".game .play")
         const response = await startGame({ username: userName })
         if (response.Success) {
             setGameId(response.Data.gameId)
@@ -25,8 +26,8 @@ const GameSection = () => {
 
 
     useEffect(() => {
-        const titleElement = document.querySelector(".login .title")
-        const authElement = document.querySelector(".login .form")
+        const titleElement = document.querySelector(".play .title")
+        const authElement = document.querySelector(".play .form")
         titleElement?.classList.add("slide")
         authElement?.classList.add("slide")
 
@@ -36,9 +37,10 @@ const GameSection = () => {
 
     return (
         <section className='game'>
-            {/* 
-            <Login handleStart={handleStart} />
+
+            {/* <Play handleStart={handleStart} />
             <Loading /> */}
+            <StartGame />
 
 
         </section>

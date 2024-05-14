@@ -6,11 +6,11 @@ interface IProps {
     handleStart: (username: string) => void
 }
 
-const Login: React.FC<IProps> = ({ handleStart }) => {
+const Play: React.FC<IProps> = ({ handleStart }) => {
     const userInputRef = useRef<HTMLInputElement>(null)
 
     return (
-        <div className='login'>
+        <div className='play'>
             <div className='title'>
                 <h1>Kelime Avı: Zihin Jimnastiği Oyunu</h1>
                 <p>Kelime Avı, zihinsel becerilerinizi sınamak ve kelime dağarcığınızı geliştirmek için harika bir yol! Bu bağımlılık yapıcı oyun, farklı zorluk seviyelerinde yüzlerce kelime bulmacasını içerir. Hızınızı ve kelime bilginizi test edin, yeni kelimeler öğrenin ve beyin jimnastiği yaparken eğlenin!</p>
@@ -23,4 +23,4 @@ const Login: React.FC<IProps> = ({ handleStart }) => {
     )
 }
 
-export default Login
+export default Play
