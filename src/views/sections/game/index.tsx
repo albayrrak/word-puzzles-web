@@ -1,40 +1,45 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./style.scss"
+import { startGame } from '@/actions/api'
+import Loading from '@/views/components/loading'
+import Login from '@/views/components/start'
+
 const GameSection = () => {
+
+    const [gameId, setGameId] = useState("")
+
+    const handleStart = async (userName: string) => {
+        const gameScreen = document.querySelector(".game")
+        const loadingScreenElement = document.querySelector(".game .loading")
+        const loginScreenElement = document.querySelector(".game .start")
+        const response = await startGame({ username: userName })
+        if (response.Success) {
+            setGameId(response.Data.gameId)
+            gameScreen?.classList.add("loading")
+            loadingScreenElement?.classList.add("show")
+            loginScreenElement?.classList.add("hide")
+        }
+
+    }
+
+
+    useEffect(() => {
+        const titleElement = document.querySelector(".login .title")
+        const authElement = document.querySelector(".login .form")
+        titleElement?.classList.add("slide")
+        authElement?.classList.add("slide")
+
+    }, [])
+
 
 
     return (
         <section className='game'>
-            <div className='title'>
-                <h1>Kelime Avı: Zihin Jimnastiği Oyunu</h1>
-                <p>Kelime Avı, zihinsel becerilerinizi sınamak ve kelime dağarcığınızı geliştirmek için harika bir yol! Bu bağımlılık yapıcı oyun, farklı zorluk seviyelerinde yüzlerce kelime bulmacasını içerir. Hızınızı ve kelime bilginizi test edin, yeni kelimeler öğrenin ve beyin jimnastiği yaparken eğlenin!</p>
-            </div>
+            {/* 
+            <Login handleStart={handleStart} />
+            <Loading /> */}
 
-            <div className='result'>
-                <div className='timer'>
-                    <span>Timer:</span>
-                    <span>60</span>
-                </div>
-                <div className='point'>
-                    <span>Point:</span>
-                    <span>0</span>
-                </div>
-            </div>
-            <div className='words'>
-                <div className="word-box">
-                    <h4>A</h4>
-                </div>
-                <div className="word-box">
-                    <h4>Ç</h4>
-                </div>
-                <div className="word-box">
-                    <h4>M</h4>
-                </div>
-            </div>
-            <div className='text'>
-                <input type="text" />
-            </div>
 
         </section>
     )

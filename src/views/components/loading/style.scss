@@ -1,0 +1,47 @@
+ .game .loading {
+     display: none;
+
+     &.show {
+         display: block;
+     }
+
+     &.hide {
+         display: none;
+     }
+
+     span {
+         --delay: var(--delay);
+         display: inline-flex;
+         justify-content: center;
+         align-items: center;
+         margin-left: 16px;
+         border-radius: 8px;
+         font-size: 24px;
+         font-weight: bold;
+         background-color: var(--active);
+         width: 50px;
+         height: 50px;
+         transform: scale(0);
+         animation: loadingAnimation 1s forwards infinite alternate;
+
+         @keyframes loadingAnimation {
+             to {
+                 opacity: 1;
+                 transform: scale(1);
+             }
+         }
+     }
+
+     p {
+         text-align: center;
+         margin-top: 32px;
+         color: var(--text-bg);
+     }
+
+     @keyframes shadowAnimation {
+         to {
+             opacity: 1;
+             transform: scale(1);
+         }
+     }
+ }

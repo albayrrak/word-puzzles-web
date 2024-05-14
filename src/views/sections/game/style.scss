@@ -1,77 +1,70 @@
 @import "../../../assets/colors";
 
 .game {
+    position: relative;
+    width: 850px;
+    height: 300px;
+    background: var(--bg-darker2);
+    border-radius: 16px;
+    gap: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: .5s ease-in-out all;
+    cursor: pointer;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 850px;
-    // height: 850px;
-    background: $dark-secondary-color;
-    border-radius: 16px;
 
-    .title {
-        width: 100%;
-        padding: 32px;
+    &.loading {
+        animation: shadowPulse 1s infinite alternate;
 
-        h1 {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 16px;
-            color: $text-light-color;
-        }
+        @keyframes shadowPulse {
+            0% {
+                filter: drop-shadow(0px 0px 0px var(--active));
+            }
 
-        p {
-            font-size: 16px;
-            text-align: center;
-            color: rgba($color: $text-light-color, $alpha: .4);
-        }
-    }
-
-    .result {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 32px;
-        background: $primary-color;
-        border-top: 2px solid rgba($color: $dark-primary-color, $alpha: .8);
-        border-bottom: 2px solid rgba($color: $dark-primary-color, $alpha: .8);
-    }
-
-    .words {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        padding: 32px;
-        width: 100%;
-
-        .word-box {
-            width: 62px;
-            height: 62px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba($color: $text-light-color, $alpha: .4);
-            border-radius: 8px;
-
-            h4 {
-                font-size: 32px;
+            100% {
+                filter: drop-shadow(0px 0px 24px var(--active));
             }
         }
     }
 
-    .text {
-        padding: 32px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        input[type="text"] {
-            margin: 0 auto;
-        }
+    &:not(.loading)::after {
+        content: "A";
+        position: absolute;
+        top: -35px;
+        left: -35px;
+        width: 55px;
+        height: 55px;
+        z-index: 1;
+        font-size: 100px;
+        font-weight: bolder;
+        transform: rotate(-25deg);
+        opacity: .4;
     }
+
+    &:not(.loading)::before {
+        content: "Z";
+        position: absolute;
+        bottom: 30px;
+        right: -25px;
+        width: 55px;
+        height: 55px;
+        z-index: 4;
+        font-size: 100px;
+        font-weight: bolder;
+        transform: rotate(35deg);
+        opacity: .4;
+    }
+
+    &:not(.loading):hover {
+        border: 1px solid var(--active);
+        filter: drop-shadow(0px 0px 24px var(--active))
+    }
+
+
+
+
+
 
 }
