@@ -29,7 +29,12 @@
         }
     }
 
-    &:not(.loading)::after {
+    &.play {
+        height: unset;
+
+    }
+
+    &:not(:where(.loading, .play))::after {
         content: "A";
         position: absolute;
         top: -35px;
@@ -43,7 +48,7 @@
         opacity: .4;
     }
 
-    &:not(.loading)::before {
+    &:not(:where(.loading, .play))::before {
         content: "Z";
         position: absolute;
         bottom: 30px;
@@ -57,7 +62,7 @@
         opacity: .4;
     }
 
-    &:not(.loading):hover {
+    &:not(:where(.loading, .play)):hover {
         border: 1px solid var(--active);
         filter: drop-shadow(0px 0px 24px var(--active))
     }
