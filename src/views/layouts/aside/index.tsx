@@ -5,7 +5,7 @@ import RankBox from '@/views/components/rank-box'
 const Aside = () => {
     return (
         <aside>
-            <div className='top'>
+            {/* <div className='top'>
                 <h1>Rank Top 3</h1>
                 <RankBox />
                 <RankBox />
@@ -24,7 +24,7 @@ const Aside = () => {
                 <RankBox />
                 <RankBox />
                 <RankBox />
-            </div>
+            </div> */}
         </aside>
     )
 }

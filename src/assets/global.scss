@@ -1,5 +1,13 @@
 @import "./colors";
 
+:root {
+
+    --light-blue: #12c2e9;
+    --bg-darker: #32373D;
+    --highlight-darker: #42474D;
+    --white: #fff;
+    --danger: #f64f59
+}
 
 
 * {
@@ -7,23 +15,17 @@
     padding: 0;
     box-sizing: border-box;
 
-    --primary: #5F5DFE;
-    --primary-darker: #4F4DFE;
-    --bg-darker: #23262D;
-    --bg-darker2: #32373D;
-    --border: #42474D;
-    --white: #fff;
-    --text: #E6E9EB;
-    --active: #7774B5;
-    --input-border: #42474D;
-    --input-bg: #343841;
 
-    --socials-border: #42474D;
-    --highlight-bg: #34393F;
-    --text-bg: #E0E3EA;
-    --social-color: #6B6C6E;
-    --scrollbar-thumb: #E4E3F3;
-    --scrollbar-bg: #F2F6F5;
+    // --text: #E6E9EB;
+    // --active: #7774B5;
+    // --input-border: #42474D;
+    // --input-bg: #343841;
+
+    // --highlight-bg: #34393F;
+    // --text-bg: #E0E3EA;
+    // --social-color: #6B6C6E;
+    // --scrollbar-thumb: #E4E3F3;
+    // --scrollbar-bg: #F2F6F5;
 }
 
 html,
@@ -40,38 +42,44 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 310px;
+
 
 }
 
-.btn {
-    background: var(--primary);
-    color: var(--white);
-    padding: .5rem 1rem;
-    border-radius: .5rem;
-    width: 100%;
-    font-weight: 600;
-    min-height: 3rem;
+button {
+    background: none;
+    outline: none;
     border: none;
-    cursor: pointer;
-    transition: all .3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: inherit;
-
-    &.primary {
-        background: var(--primary);
-        transition: .5s ease-in all;
-
-        &:hover {
-            background: var(--primary-darker);
-        }
-    }
-
-    &.secondary {
-        background: var(--input-bg);
-        border: 1px solid var(--border-color);
-        font-weight: 400;
-    }
 }
+
+// .btn {
+//     background: var(--primary);
+//     color: var(--white);
+//     padding: .5rem 1rem;
+//     border-radius: .5rem;
+//     width: 100%;
+//     font-weight: 600;
+//     min-height: 3rem;
+//     border: none;
+//     cursor: pointer;
+//     transition: all .3s;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     font-family: inherit;
+
+//     &.primary {
+//         background: var(--primary);
+//         transition: .5s ease-in all;
+
+//         &:hover {
+//             background: var(--primary-darker);
+//         }
+//     }
+
+//     &.secondary {
+//         background: var(--input-bg);
+//         border: 1px solid var(--border-color);
+//         font-weight: 400;
+//     }
+// }

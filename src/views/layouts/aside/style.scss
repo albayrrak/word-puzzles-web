@@ -1,7 +1,7 @@
 @import "../../../assets/colors";
 
 aside {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 300px;
@@ -10,25 +10,15 @@ aside {
     box-shadow: 0px 4px 15px 5px rgba($color: $dark-primary-color, $alpha: .2);
     z-index: 1;
 
-    // &::before {
-    //     content: "";
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    //     width: 305px;
-    //     height: 100%;
-    //     background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
-    //     z-index: -1;
+
+    // .top {
+
+
+    //     h1 {
+    //         width: 100%;
+    //         text-align: center;
+    //         padding: 24px 16px;
+    //         color: $text-light-color;
+    //     }
     // }
-
-    .top {
-
-
-        h1 {
-            width: 100%;
-            text-align: center;
-            padding: 24px 16px;
-            color: $text-light-color;
-        }
-    }
 }

@@ -1,0 +1,15 @@
+ .btn {
+     background: var(--highlight-darker);
+     padding: 12px 24px;
+     border-radius: 6px;
+     font-size: 16px;
+     color: var(--light-blue);
+     cursor: pointer;
+     font-weight: 600;
+     transition: .5s ease all;
+
+     &:hover {
+         box-shadow: 4px 4px 10px #111;
+
+     }
+ }

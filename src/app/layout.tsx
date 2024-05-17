@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Aside from "@/views/layouts/aside";
 import "@/assets/global.scss";
 import { useStore } from "@/store/store";
+import Toastify from "@/views/components/toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
 
       <body className={inter.className}>
-        <Aside />
+        <Toastify />
         {children}
       </body>
     </html>

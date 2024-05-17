@@ -10,6 +10,9 @@ type GlobalStore = {
     setGame: (game: GameResponseModel) => void
     finishGame: boolean
     setFinishGame: (finishGame: boolean) => void
+    toastify?: ToastifyModel;
+    setToastify: (toastify: ToastifyModel | undefined) => void
+
 }
 
 export const useStore = create<GlobalStore>(set => ({
@@ -20,5 +23,6 @@ export const useStore = create<GlobalStore>(set => ({
     game: {} as GameResponseModel,
     setGame: (game: GameResponseModel) => set({ game: game }),
     finishGame: false,
-    setFinishGame: (finishGame: boolean) => set({ finishGame: finishGame })
+    setFinishGame: (finishGame: boolean) => set({ finishGame: finishGame }),
+    setToastify: (toastify: ToastifyModel | undefined) => set({ toastify: toastify })
 }))

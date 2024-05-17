@@ -46,4 +46,9 @@ type FinishGameRequestModel = {
     gameId: string;
 }
 
+type ToastifyModel = {
+    text: string
+    status: "error" | "success"
+}
+
 

@@ -1,0 +1,57 @@
+.toastify {
+    position: absolute;
+    height: 76px;
+    top: -76px;
+    left: 50%;
+    z-index: 9999;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    gap: 16px;
+    transition: .5s ease-in all;
+
+    h4 {
+        color: #fff;
+    }
+
+    &.active {
+        top: 15px;
+    }
+
+    &.error {
+        background: var(--danger);
+
+        .icon.success {
+            display: none;
+        }
+    }
+
+    &.success {
+        background: #51c751;
+
+        .icon.error {
+            display: none;
+        }
+    }
+
+    .icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.error {
+            background: rgba($color: #e3646c, $alpha: .6);
+        }
+
+        &.success {
+            background: rgba($color: #70e570, $alpha: .6);
+        }
+
+    }
+}
