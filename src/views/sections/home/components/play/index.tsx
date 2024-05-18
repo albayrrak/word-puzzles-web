@@ -40,7 +40,6 @@ const Play = () => {
 
     return (
         <div className='play'>
-
             <div className="wrapper">
                 <div className='title'>
                     <h1>Kelime Avı: Zihin Jimnastiği Oyunu</h1>
@@ -58,7 +57,6 @@ const Play = () => {
                     <Button text='Giriş Yap' />
                 </form>
             </div>
-
         </div>
     )
 }

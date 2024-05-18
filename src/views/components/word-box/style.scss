@@ -8,15 +8,43 @@
     font-size: 24px;
     font-weight: bold;
     background-color: var(--bg-darker);
+    border: 1px solid var(--highlight-darker);
     width: 50px;
     height: 50px;
     transform: scale(0);
     animation: loadingAnimation 1s forwards alternate;
+    color: rgba($color: #fff, $alpha: .4);
+
+    &.error {
+        --delay: var(--delay);
+        background: #fff;
+        color: var(--danger);
+        border: 1px solid var(--danger);
+        animation: shake .5s forwards;
+    }
 
     @keyframes loadingAnimation {
         to {
             opacity: 1;
             transform: scale(1);
+        }
+    }
+
+    @keyframes shake {
+        0% {
+            transform: rotate(-50deg)
+        }
+
+        25% {
+            transform: rotate(50deg);
+        }
+
+        50% {
+            transform: rotate(-50deg);
+        }
+
+        100% {
+            transform: rotate(0);
         }
     }
 }

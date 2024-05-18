@@ -1,11 +1,11 @@
 import Loading from "@/views/components/loading";
-import GameSection from "@/views/sections/game";
+import HomeSection from "@/views/sections/home";
 
 export default async function Home() {
 
   return (
     <main>
-      <GameSection />
+      <HomeSection />
     </main>
   );
 }

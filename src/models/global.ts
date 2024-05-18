@@ -51,4 +51,8 @@ type ToastifyModel = {
     status: "error" | "success"
 }
 
+type GetTopRankRequestModel = {
+    count: number;
+}
+
 

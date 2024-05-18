@@ -27,7 +27,11 @@ export const wordVerify = async (data: WordVerifyRequestModel) => {
 export const finishGame = async (data: FinishGameRequestModel) => {
     const response: AxiosResponse<GlobalResponseModel<null>> = await requestApi.post("/finish", data)
 
+    return response.data
+}
 
+export const getTopRank = async (data: GetTopRankRequestModel) => {
+    const response: AxiosResponse<GlobalResponseModel<GameResponseModel[]>> = await requestApi.post("/rank", data)
 
     return response.data
 }

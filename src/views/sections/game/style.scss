@@ -1,8 +1,144 @@
-@import "../../../assets/colors";
-
 .game {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
-    display: flex;
 
+    .wrapper {
+        position: relative;
+        padding: 42px;
+        background: linear-gradient(35deg, #12c2e9, #c471ed, #f64f59);
+        background-size: 150%;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 56px;
+        z-index: 1;
+        animation: neon-bg 2s infinite alternate-reverse;
+
+        @keyframes neon-bg {
+            0% {
+                background-position: 0% 50%;
+                background-size: 200%;
+            }
+
+            100% {
+                background-position: 50% 100%;
+                background-size: 200%;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            background: var(--bg-darker);
+            border-radius: 6px;
+            z-index: -1;
+        }
+
+        .title {
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            h1 {
+                font-size: 36px;
+                text-align: center;
+                font-weight: 900;
+                background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-transform: uppercase;
+                letter-spacing: 4px;
+            }
+
+            p {
+                font-size: 14px;
+                line-height: 20px;
+                text-align: center;
+                color: rgba($color: #fff, $alpha: .4);
+                max-width: 480px;
+                text-align: center;
+            }
+
+        }
+
+        .information {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 12px;
+                width: 76px;
+                height: 76px;
+                // border-radius: 50%;
+                border-radius: 8px;
+                background: #12c2e9;
+                gap: 8px;
+
+                &:nth-child(2) {
+                    background: var(--danger-color);
+                }
+
+                &:nth-child(3) {
+                    background: var(--info-color);
+                }
+
+                .icon {
+                    width: 24px;
+                    height: 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                }
+
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+
+            label {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid var(--light-blue);
+                outline: none;
+                border-radius: 12px;
+                padding: 8px 16px;
+                gap: 16px;
+
+                input {
+                    width: 100%;
+                    height: 56px;
+                    background: none;
+                    border: none;
+                    outline: none;
+                    color: rgba($color: #fff, $alpha: .4);
+                }
+
+            }
+
+            .words {
+                display: flex;
+                gap: 16px;
+            }
+        }
+
+
+    }
 }

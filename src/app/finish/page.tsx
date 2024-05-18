@@ -3,7 +3,7 @@ import React from 'react'
 
 const Finish = () => {
     return (
-        <main className='finish'>
+        <main>
             <FinishGame />
         </main>
     )
