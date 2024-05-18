@@ -9,6 +9,7 @@ import { useStore } from '@/store/store'
 import WordBox from '@/views/components/word-box'
 import { getGame, wordVerify } from '@/actions/api'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 const GameSection = () => {
     const router = useRouter()
@@ -16,6 +17,9 @@ const GameSection = () => {
     const [word, setWord] = useState("")
     const [timer, setTimer] = useState(60);
     const [wordError, setWordError] = useState(false)
+    const [mounted, setMounted] = useState(false)
+    const { t } = useTranslation()
+
 
     useEffect(() => {
         if (timer === 0) {
@@ -56,12 +60,20 @@ const GameSection = () => {
         }
 
     }
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    if (!mounted) {
+        return null
+    }
     return (
         <section className='game'>
             <div className="wrapper">
                 <div className="title">
-                    <h1>Word Puzzles Game</h1>
-                    <p>Please enter the word you think matches the hint given below. Use the input field to submit your answer. Good luck and have fun!</p>
+                    <h1>{t("Game.title")}</h1>
+                    <p>{t("Game.description")}!</p>
                 </div>
                 <div className='information'>
                     <div className='content'>

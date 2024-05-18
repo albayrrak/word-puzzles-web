@@ -1,3 +1,5 @@
+@import "@/assets/mixins";
+
 aside {
     display: flex;
     flex-direction: column;
@@ -5,17 +7,72 @@ aside {
     height: 100%;
     background: var(--highlight-darker);
     box-shadow: 0px 4px 15px 5px rgba($color: #32373D, $alpha: .2);
+    overflow: auto;
 
-   
+    @include md {
+        flex-direction: row;
+        height: 150px;
+        width: 100%;
 
-    // .top {
+
+        div {
+            display: none;
+        }
+    }
+
+    @include sm {
+        height: 112px;
+    }
 
 
-    //     h1 {
-    //         width: 100%;
-    //         text-align: center;
-    //         padding: 24px 16px;
-    //         color: $text-light-color;
-    //     }
-    // }
+    .settings {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+
+        @include md {
+            margin: 0;
+            align-items: flex-start;
+            justify-content: center;
+
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+
+            h4 {
+                font: 24px;
+                color: rgba($color: #fff, $alpha: .6);
+            }
+        }
+
+        select {
+            background: none;
+            height: 44px;
+            border: 1px solid rgba($color: #fff, $alpha: .6);
+            padding: 12px;
+            outline: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+
+            @include lg {
+                width: 100%;
+            }
+
+
+
+            option {
+                background: rgba($color: #fff, $alpha: .6);
+                cursor: pointer;
+                color: var(--highlight-darker);
+                padding: 18px;
+            }
+        }
+    }
 }

@@ -35,8 +35,21 @@ body {
     color: var(--text);
 }
 
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgb(99, 99, 99);
+    border-radius: 100;
+}
+
 main {
     width: 100%;
+    min-height: 100vh;
     height: 100%;
     display: flex;
     align-items: center;

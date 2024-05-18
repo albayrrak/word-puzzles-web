@@ -7,6 +7,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { MdScore } from 'react-icons/md';
 import "./style.scss"
 import { IconType } from 'react-icons';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
     title: string;
@@ -14,6 +15,7 @@ interface IProps {
     data: GameResponseModel[]
 }
 const RankBox: React.FC<IProps> = ({ title, icon, data }) => {
+    const { t } = useTranslation()
     return (
         <div className='box' >
             <div className='title'>
@@ -30,7 +32,7 @@ const RankBox: React.FC<IProps> = ({ title, icon, data }) => {
                         </div>
 
                         <div className="text">
-                            <h4>Kullanıcı Adı</h4>
+                            <h4>{t("Aside.username")}</h4>
                             <span>{x.player.username}</span>
 
                         </div>
@@ -40,7 +42,7 @@ const RankBox: React.FC<IProps> = ({ title, icon, data }) => {
                             <MdScore size={35} />
                         </div>
                         <div className="text">
-                            <h4>Skor</h4>
+                            <h4>{t("Aside.score")}</h4>
                             <span>{x.score}</span>
 
                         </div>

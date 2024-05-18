@@ -1,19 +1,23 @@
 "use client"
-import React, { useRef } from 'react'
-import "./style.scss"
+import React, { useEffect, useRef, useState } from 'react'
 import { faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Button from '@/views/components/button'
 import { getGame, startGame } from '@/actions/api'
 import { useStore } from '@/store/store'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
+
+import "./style.scss"
 
 
 
 const Play = () => {
+    const [mounted, setMounted] = useState(false)
     const { setGame, setPlayGame, setToastify } = useStore(state => state)
     const userInputRef = useRef<HTMLInputElement>(null)
     const router = useRouter()
+    const { t } = useTranslation()
 
     const handleStart = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -38,23 +42,27 @@ const Play = () => {
 
     }
 
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    if (!mounted) {
+        return null
+    }
     return (
         <div className='play'>
             <div className="wrapper">
                 <div className='title'>
-                    <h1>Kelime Avı: Zihin Jimnastiği Oyunu</h1>
-                    <p>Kelime Avı, zihinsel becerilerinizi sınamak ve kelime dağarcığınızı geliştirmek için harika bir yol! Bu bağımlılık yapıcı oyun, farklı zorluk seviyelerinde yüzlerce kelime bulmacasını içerir. Hızınızı ve kelime bilginizi test edin, yeni kelimeler öğrenin ve beyin jimnastiği yaparken eğlenin!</p>
+                    <h1>{t("Home.title")}</h1>
+                    <p>{t("Home.description")}</p>
                 </div>
-                <hr />
                 <form onSubmit={handleStart}>
-                    <div>
-                        <h4>Kullanıcı adı girin ve oyuna başlayın</h4>
-                    </div>
+
                     <label htmlFor="">
                         <FontAwesomeIcon icon={faUser} fontSize={24} color='#12c2e9' />
                         <input ref={userInputRef} type="text" placeholder='Username...' />
                     </label>
-                    <Button text='Giriş Yap' />
+                    <Button text={t("Home.buttonText")} />
                 </form>
             </div>
         </div>

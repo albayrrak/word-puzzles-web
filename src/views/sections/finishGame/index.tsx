@@ -11,10 +11,12 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules'
 import { MdScore } from 'react-icons/md'
+import { useTranslation } from 'react-i18next'
 const FinishGame = () => {
-    const { game } = useStore(x => x)
+    const { game } = useStore(state => state)
     const [topRank, setTopRank] = useState<GameResponseModel[]>([])
-
+    const [mounted, setMounted] = useState(false)
+    const { t } = useTranslation()
     useEffect(() => {
         const topRank = async () => {
             try {
@@ -29,10 +31,16 @@ const FinishGame = () => {
             }
         }
         topRank()
+        setMounted(true)
     }, [])
-    console.log(topRank);
 
+    if (!mounted) {
+        setMounted(true)
+    }
 
+    if (!mounted) {
+        return null
+    }
     return (
         <section className='result'>
             <div className="wrapper">
@@ -40,8 +48,8 @@ const FinishGame = () => {
                     <div className='icon'>
                         <FontAwesomeIcon icon={faCheck} fontSize={48} color='#69d669' />
                     </div>
-                    <h1>Tebrikler! <br />YUCEL ALBAYRAK </h1>
-                    <h4>TAM <span>360 PUAN</span> TOPLADINIZ </h4>
+                    <h1>{t("Finish.title")} <br />{game?.player?.username}</h1>
+                    <h4>{t("Finish.totalScore")} : <span>{game?.score}</span> </h4>
                 </div>
                 <div className="rank-swiper">
                     <Swiper direction='vertical' autoplay={{ delay: 2500, disableOnInteraction: false }} modules={[Autoplay]} spaceBetween={16}>
@@ -56,7 +64,7 @@ const FinishGame = () => {
                                         </div>
 
                                         <div className="text">
-                                            <h4>Kullanıcı Adı</h4>
+                                            <h4>{t("Finish.username")}</h4>
                                             <span>{x.player.username}</span>
 
                                         </div>
@@ -66,7 +74,7 @@ const FinishGame = () => {
                                             <MdScore size={35} color='#fff' />
                                         </div>
                                         <div className="text">
-                                            <h4>Skor</h4>
+                                            <h4>{t("Finish.score")}</h4>
                                             <span>{x.score}</span>
 
                                         </div>
@@ -79,7 +87,6 @@ const FinishGame = () => {
                     </Swiper>
 
                 </div>
-
             </div>
         </section>
     )
