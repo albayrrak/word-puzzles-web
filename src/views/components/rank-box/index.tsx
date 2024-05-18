@@ -1,22 +1,53 @@
 import React from 'react'
-import { PiRankingFill } from "react-icons/pi";
 
 
+import { GiChampions } from 'react-icons/gi';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { MdScore } from 'react-icons/md';
 import "./style.scss"
-const RankBox = () => {
+import { IconType } from 'react-icons';
+
+interface IProps {
+    title: string;
+    icon: React.ReactNode
+    data: GameResponseModel[]
+}
+const RankBox: React.FC<IProps> = ({ title, icon, data }) => {
     return (
-        <div className='rank'>
-            <div className='rate'>
-                <h4>1</h4>
-            </div>
-
-            <div className='information'>
-                <h4>User Name</h4>
-
+        <div className='box' >
+            <div className='title'>
                 <div className='icon'>
-                    <PiRankingFill fontSize={36} />
+                    {icon}
                 </div>
+                <h4>{title}</h4>
             </div>
+            {data && data.length > 0 && data.map((x, i) =>
+                <div className='list' style={{ animationDelay: `${0.5 * (i + 1)}s` }}>
+                    <div className='info'>
+                        <div className='icon'>
+                            <FontAwesomeIcon icon={faUser} fontSize={16} />
+                        </div>
+
+                        <div className="text">
+                            <h4>Kullanıcı Adı</h4>
+                            <span>{x.player.username}</span>
+
+                        </div>
+                    </div>
+                    <div className='info'>
+                        <div className='icon'>
+                            <MdScore size={35} />
+                        </div>
+                        <div className="text">
+                            <h4>Skor</h4>
+                            <span>{x.score}</span>
+
+                        </div>
+                    </div>
+
+                </div>
+            )}
 
         </div>
     )

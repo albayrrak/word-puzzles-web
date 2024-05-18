@@ -7,7 +7,7 @@ import Aside from '@/views/layouts/aside'
 import "./style.scss"
 
 const GameSection = () => {
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
 
     useEffect(() => {
@@ -21,8 +21,6 @@ const GameSection = () => {
         <section className='home'>
             <Aside />
             <Play />
-            {/* <Loading classNames={loading ? "show" : ""} />
-                {!loading && playGame && <StartGame classNames={!loading && playGame ? "show" : ""} />} */}
         </section>
     )
 }
