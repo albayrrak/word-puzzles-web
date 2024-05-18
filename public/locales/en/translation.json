@@ -24,5 +24,10 @@
     "totalScore":"YOUR TOTAL SCORE",
     "username":"Username",
     "score":"Score"
+  },
+
+  "Loading":{
+    "title":"LOADING",
+    "description":"The game starts soon. Please wait"
   }
 }

@@ -7,11 +7,11 @@ import Aside from '@/views/layouts/aside'
 import "./style.scss"
 
 const GameSection = () => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
-        setTimeout(() => { setLoading(false) }, 4000)
+        setTimeout(() => { setLoading(false) }, 3000)
     }, [])
 
     if (loading) {

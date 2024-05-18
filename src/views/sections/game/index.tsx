@@ -7,9 +7,10 @@ import { MdScore } from 'react-icons/md'
 import "./style.scss"
 import { useStore } from '@/store/store'
 import WordBox from '@/views/components/word-box'
-import { getGame, wordVerify } from '@/actions/api'
+import { finishGame, getGame, wordVerify } from '@/actions/api'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
+import Loading from '@/views/components/loading'
 
 const GameSection = () => {
     const router = useRouter()
@@ -20,10 +21,24 @@ const GameSection = () => {
     const [mounted, setMounted] = useState(false)
     const { t } = useTranslation()
 
+    const [loading, setLoading] = useState(true)
+
+
+    useEffect(() => {
+        setTimeout(() => { setLoading(false) }, 3000)
+    }, [])
+
 
     useEffect(() => {
         if (timer === 0) {
-            // finish(game.id)
+            finishGame({ gameId: game.id }).then(res => {
+                console.log("test", res);
+
+                if (res.success) {
+                    clearInterval(timerId);
+                    router.push("/")
+                }
+            })
         };
 
         const timerId = setInterval(() => {
@@ -64,6 +79,10 @@ const GameSection = () => {
     useEffect(() => {
         setMounted(true)
     }, [])
+
+    if (loading) {
+        return <Loading />
+    }
 
     if (!mounted) {
         return null

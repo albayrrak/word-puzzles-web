@@ -24,6 +24,11 @@
     "totalScore":"TOPLAM PUANINIZ",
     "username":"Kullanıcı Adı",
     "score":"Skor"
+  },
+
+  "Loading":{
+    "title":"BEKLEYİN",
+    "description":"Oyun birazdan başlıyor. Lütfen bekleyin"
   }
 
 }

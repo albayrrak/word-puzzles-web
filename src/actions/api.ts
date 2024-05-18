@@ -25,7 +25,7 @@ export const wordVerify = async (data: WordVerifyRequestModel) => {
 }
 
 export const finishGame = async (data: FinishGameRequestModel) => {
-    const response: AxiosResponse<GlobalResponseModel<null>> = await requestApi.post("/finish", data)
+    const response: AxiosResponse<GlobalResponseModel<GameResponseModel>> = await requestApi.post("/finish", data)
 
     return response.data
 }

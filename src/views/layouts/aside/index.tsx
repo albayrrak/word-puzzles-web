@@ -8,12 +8,13 @@ import { getTopRank } from '@/actions/api'
 import { GrLanguage } from "react-icons/gr";
 import { useTranslation } from 'react-i18next'
 import { changeLanguage } from '@/helpers/global'
+import { Language } from '@/models/enums'
 
 const Aside = () => {
     const [champ, setChamp] = useState<GameResponseModel[]>([])
     const [topTen, setTopTen] = useState<GameResponseModel[]>([])
     const [mounted, setMounted] = useState(false)
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
 
     useEffect(() => {
         const getChampion = async () => {
@@ -66,12 +67,11 @@ const Aside = () => {
                     <GrLanguage fontSize={16} color='#fff' />
                     <h4>{t("Aside.language")}</h4>
                 </div>
-                <select name="language" onChange={(e) => changeLanguage(e.target.value)}>
-                    <option value="tr">Turkish</option>
-                    <option value="en">English</option>
+                <select name="language" onChange={(e) => changeLanguage(e.target.value)} >
+                    <option value="tr" selected={i18n.language === Language.TR ? true : false}>Turkish</option>
+                    <option value="en" selected={i18n.language === Language.EN ? true : false}>English</option>
                 </select>
             </div>
-
 
         </aside>
     )

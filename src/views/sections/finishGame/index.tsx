@@ -12,7 +12,9 @@ import 'swiper/css';
 import { Autoplay } from 'swiper/modules'
 import { MdScore } from 'react-icons/md'
 import { useTranslation } from 'react-i18next'
+import Loading from '@/views/components/loading'
 const FinishGame = () => {
+    const [loading, setLoading] = useState(true)
     const { game } = useStore(state => state)
     const [topRank, setTopRank] = useState<GameResponseModel[]>([])
     const [mounted, setMounted] = useState(false)
@@ -32,10 +34,12 @@ const FinishGame = () => {
         }
         topRank()
         setMounted(true)
+        setTimeout(() => { setLoading(false) }, 3000)
     }, [])
 
-    if (!mounted) {
-        setMounted(true)
+
+    if (loading) {
+        return <Loading />
     }
 
     if (!mounted) {
