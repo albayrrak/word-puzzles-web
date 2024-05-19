@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 const requestApi = axios.create({
-    baseURL: "http://54.87.62.158/",
+    baseURL: "https://cors-anywhere.herokuapp.com/http://54.87.62.158/",
     headers: {
         "Access-Control-Allow-Origin": "*"
     }
