@@ -14,7 +14,7 @@ import "./style.scss"
 
 
 const Play = () => {
-    const { setGame, setPlayGame, setToastify } = useStore(state => state)
+    const { setGame, setToastify } = useStore(state => state)
     const userInputRef = useRef<HTMLInputElement>(null)
     const router = useRouter()
     const params = useParams()
@@ -31,7 +31,6 @@ const Play = () => {
 
                 if (game.success) {
                     router.push("/game")
-                    setPlayGame(true)
                     setGame(game.data.game as GameResponseModel)
                 }
             } else {
