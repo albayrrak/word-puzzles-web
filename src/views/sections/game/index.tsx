@@ -117,7 +117,7 @@ const GameSection = () => {
                             <FontAwesomeIcon icon={faUser} fontSize={20} color='#fff' />
                         </div>
                         <div className="text">
-                            <h4>60</h4>
+                            <h4>{game.level}</h4>
                         </div>
                     </div>
                 </div>
