@@ -20,9 +20,6 @@ const Aside = () => {
 
     const t = useTranslations("Aside")
 
-
-
-
     useEffect(() => {
         const getChampion = async () => {
             try {
@@ -52,13 +49,11 @@ const Aside = () => {
         Promise.all([getChampion(), getTopTen()]).then(([championResponse, topTenResponse]) => {
             setChamp(championResponse ?? [])
             setTopTen(topTenResponse ?? [])
-
         })
 
 
     }, [])
 
-    console.log("path", pathname);
 
 
     return (
