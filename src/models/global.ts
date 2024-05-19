@@ -10,6 +10,7 @@ type GlobalResponseModel<T extends any> = {
 
 type StartGameRequestModel = {
     username: string;
+    lang: string
 }
 
 type StartGameResponseModel = {
@@ -38,6 +39,7 @@ type GameRequestModel = {
 type WordVerifyRequestModel = {
     gameId: string;
     word: string;
+    lang: string;
 }
 
 

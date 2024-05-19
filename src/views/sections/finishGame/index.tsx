@@ -11,14 +11,13 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules'
 import { MdScore } from 'react-icons/md'
-import { useTranslation } from 'react-i18next'
 import Loading from '@/views/components/loading'
+import { useTranslations } from 'next-intl'
 const FinishGame = () => {
     const [loading, setLoading] = useState(true)
     const { game } = useStore(state => state)
     const [topRank, setTopRank] = useState<GameResponseModel[]>([])
-    const [mounted, setMounted] = useState(false)
-    const { t } = useTranslation()
+    const t = useTranslations("Finish")
     useEffect(() => {
         const topRank = async () => {
             try {
@@ -33,7 +32,6 @@ const FinishGame = () => {
             }
         }
         topRank()
-        setMounted(true)
         setTimeout(() => { setLoading(false) }, 3000)
     }, [])
 
@@ -42,9 +40,7 @@ const FinishGame = () => {
         return <Loading />
     }
 
-    if (!mounted) {
-        return null
-    }
+
     return (
         <section className='result'>
             <div className="wrapper">
@@ -52,8 +48,8 @@ const FinishGame = () => {
                     <div className='icon'>
                         <FontAwesomeIcon icon={faCheck} fontSize={48} color='#69d669' />
                     </div>
-                    <h1>{t("Finish.title")} <br />{game?.player?.username}</h1>
-                    <h4>{t("Finish.totalScore")} : <span>{game?.score}</span> </h4>
+                    <h1>{t("title")} <br />{game?.player?.username}</h1>
+                    <h4>{t("totalScore")} : <span>{game?.score}</span> </h4>
                 </div>
                 <div className="rank-swiper">
                     <Swiper direction='vertical' autoplay={{ delay: 2500, disableOnInteraction: false }} modules={[Autoplay]} spaceBetween={16}>
@@ -68,7 +64,7 @@ const FinishGame = () => {
                                         </div>
 
                                         <div className="text">
-                                            <h4>{t("Finish.username")}</h4>
+                                            <h4>{t("username")}</h4>
                                             <span>{x.player.username}</span>
 
                                         </div>
@@ -78,7 +74,7 @@ const FinishGame = () => {
                                             <MdScore size={35} color='#fff' />
                                         </div>
                                         <div className="text">
-                                            <h4>{t("Finish.score")}</h4>
+                                            <h4>{t("score")}</h4>
                                             <span>{x.score}</span>
 
                                         </div>

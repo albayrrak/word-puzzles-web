@@ -4,22 +4,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from "@fortawesome/free-solid-svg-icons"
 import { PiClockCountdownFill } from 'react-icons/pi'
 import { MdScore } from 'react-icons/md'
-import "./style.scss"
 import { useStore } from '@/store/store'
 import WordBox from '@/views/components/word-box'
 import { finishGame, getGame, wordVerify } from '@/actions/api'
-import { useRouter } from 'next/navigation'
-import { useTranslation } from 'react-i18next'
+import { useRouter, useParams } from 'next/navigation'
 import Loading from '@/views/components/loading'
+import { useTranslations } from 'next-intl'
+import "./style.scss"
 
 const GameSection = () => {
     const router = useRouter()
+    const params = useParams()
     const { game, setGame } = useStore(state => state)
     const [word, setWord] = useState("")
     const [timer, setTimer] = useState(60);
     const [wordError, setWordError] = useState(false)
-    const [mounted, setMounted] = useState(false)
-    const { t } = useTranslation()
+
+    const t = useTranslations("Game")
+
 
     const [loading, setLoading] = useState(true)
 
@@ -52,7 +54,7 @@ const GameSection = () => {
         setWord(e.target.value)
         setWordError(false)
         if (e.target.value.length === game.word.length) {
-            const response = await wordVerify({ gameId: game.id, word: e.target.value })
+            const response = await wordVerify({ gameId: game.id, word: e.target.value, lang: params.layout as string })
             setWordError(false)
 
 
@@ -76,23 +78,18 @@ const GameSection = () => {
 
     }
 
-    useEffect(() => {
-        setMounted(true)
-    }, [])
 
     if (loading) {
         return <Loading />
     }
 
-    if (!mounted) {
-        return null
-    }
+
     return (
         <section className='game'>
             <div className="wrapper">
                 <div className="title">
-                    <h1>{t("Game.title")}</h1>
-                    <p>{t("Game.description")}!</p>
+                    <h1>{t("title")}</h1>
+                    <p>{t("description")}!</p>
                 </div>
                 <div className='information'>
                     <div className='content'>

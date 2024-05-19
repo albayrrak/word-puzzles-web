@@ -6,7 +6,7 @@ import Aside from '@/views/layouts/aside'
 
 import "./style.scss"
 
-const GameSection = () => {
+const HomeSection = () => {
     const [loading, setLoading] = useState(true)
 
 
@@ -25,4 +25,4 @@ const GameSection = () => {
     )
 }
 
-export default GameSection
+export default HomeSection

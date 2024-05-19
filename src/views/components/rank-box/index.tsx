@@ -1,13 +1,11 @@
 import React from 'react'
 
 
-import { GiChampions } from 'react-icons/gi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { MdScore } from 'react-icons/md';
 import "./style.scss"
-import { IconType } from 'react-icons';
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 
 interface IProps {
     title: string;
@@ -15,7 +13,7 @@ interface IProps {
     data: GameResponseModel[]
 }
 const RankBox: React.FC<IProps> = ({ title, icon, data }) => {
-    const { t } = useTranslation()
+    const t = useTranslations("Aside")
     return (
         <div className='box' >
             <div className='title'>
@@ -32,7 +30,7 @@ const RankBox: React.FC<IProps> = ({ title, icon, data }) => {
                         </div>
 
                         <div className="text">
-                            <h4>{t("Aside.username")}</h4>
+                            <h4>{t("username")}</h4>
                             <span>{x.player.username}</span>
 
                         </div>
@@ -42,7 +40,7 @@ const RankBox: React.FC<IProps> = ({ title, icon, data }) => {
                             <MdScore size={35} />
                         </div>
                         <div className="text">
-                            <h4>{t("Aside.score")}</h4>
+                            <h4>{t("score")}</h4>
                             <span>{x.score}</span>
 
                         </div>

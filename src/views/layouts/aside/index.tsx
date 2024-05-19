@@ -6,15 +6,22 @@ import { GiChampions } from 'react-icons/gi'
 import { getTopRank } from '@/actions/api'
 
 import { GrLanguage } from "react-icons/gr";
-import { useTranslation } from 'react-i18next'
-import { changeLanguage } from '@/helpers/global'
+import { useTranslations } from 'next-intl'
 import { Language } from '@/models/enums'
+import { usePathname, useRouter } from "next/navigation"
+
+
 
 const Aside = () => {
     const [champ, setChamp] = useState<GameResponseModel[]>([])
     const [topTen, setTopTen] = useState<GameResponseModel[]>([])
-    const [mounted, setMounted] = useState(false)
-    const { t, i18n } = useTranslation()
+    const pathname = usePathname()
+    const router = useRouter()
+
+    const t = useTranslations("Aside")
+
+
+
 
     useEffect(() => {
         const getChampion = async () => {
@@ -45,31 +52,28 @@ const Aside = () => {
         Promise.all([getChampion(), getTopTen()]).then(([championResponse, topTenResponse]) => {
             setChamp(championResponse ?? [])
             setTopTen(topTenResponse ?? [])
-            setMounted(true)
 
         })
 
 
     }, [])
 
-    if (!mounted) {
-        return null
-    }
+    console.log("path", pathname);
 
 
     return (
         <aside>
-            <RankBox title={t("Aside.winner")} icon={<GiChampions fontSize={24} />} data={champ} />
-            <RankBox title={t("Aside.ranks")} icon={<GiChampions fontSize={24} />} data={topTen} />
+            <RankBox title={t("winner")} icon={<GiChampions fontSize={24} />} data={champ} />
+            <RankBox title={t("ranks")} icon={<GiChampions fontSize={24} />} data={topTen} />
 
             <div className='settings'>
                 <div className='icon'>
                     <GrLanguage fontSize={16} color='#fff' />
-                    <h4>{t("Aside.language")}</h4>
+                    <h4>{t("language")}</h4>
                 </div>
-                <select name="language" onChange={(e) => changeLanguage(e.target.value)} >
-                    <option value="tr" selected={i18n.language === Language.TR ? true : false}>Turkish</option>
-                    <option value="en" selected={i18n.language === Language.EN ? true : false}>English</option>
+                <select name="language" onChange={(e) => router.push(`/${e.target.value}`)} >
+                    <option value="tr" selected={pathname === Language.TR ? true : false}>Turkish</option>
+                    <option value="en" selected={pathname === Language.EN ? true : false}>English</option>
                 </select>
             </div>
 

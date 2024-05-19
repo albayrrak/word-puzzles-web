@@ -1,22 +1,16 @@
 "use client"
 import React, { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl';
+
 import "./style.scss"
-import { useTranslation } from 'react-i18next'
 const Loading = () => {
-    const [mounted, setMounted] = useState(false)
-    const { t } = useTranslation()
+    const t = useTranslations("Loading")
 
-    useEffect(() => {
-        setMounted(true)
-    }, [])
 
-    if (!mounted) {
-        return null
-    }
     return (
         <div className='loading'>
-            <h1>{t("Loading.title")}</h1>
-            <p>{t("Loading.description")}</p>
+            <h1>{t("title")}</h1>
+            <p>{t("description")}</p>
         </div>
     )
 }
