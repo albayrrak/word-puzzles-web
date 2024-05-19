@@ -72,8 +72,8 @@ const Aside = () => {
                     <h4>{t("language")}</h4>
                 </div>
                 <select name="language" onChange={(e) => router.push(`/${e.target.value}`)} >
-                    <option value="tr" selected={pathname === Language.TR ? true : false}>Turkish</option>
-                    <option value="en" selected={pathname === Language.EN ? true : false}>English</option>
+                    <option value="tr" selected={pathname === Language.TR ? true : false}>{pathname === Language.TR ? "Türkçe" : "Turkish"}</option>
+                    <option value="en" selected={pathname === Language.EN ? true : false}>{pathname === Language.EN ? "English" : "İngilizce"}</option>
                 </select>
             </div>
 
