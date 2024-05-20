@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 const requestApi = axios.create({
-    baseURL: "http://54.87.62.158/",
+    baseURL: "https://yucel.elviz24.com/",
 })
 
 export const startGame = async (data: StartGameRequestModel) => {
