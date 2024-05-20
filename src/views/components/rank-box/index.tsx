@@ -23,7 +23,7 @@ const RankBox: React.FC<IProps> = ({ title, icon, data }) => {
                 <h4>{title}</h4>
             </div>
             {data && data.length > 0 && data.map((x, i) =>
-                <div className='list' style={{ animationDelay: `${0.5 * (i + 1)}s` }}>
+                <div key={i} className='list' style={{ animationDelay: `${0.5 * (i + 1)}s` }}>
                     <div className='info'>
                         <div className='icon'>
                             <FontAwesomeIcon icon={faUser} fontSize={16} />
