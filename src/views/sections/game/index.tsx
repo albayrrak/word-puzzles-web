@@ -118,7 +118,7 @@ const GameSection = () => {
                         </div>
                     </div>
                 </div>
-                <form>
+                <div className='form'>
                     <div className='words'>
                         {game?.wordShuffle?.split("").map(x => <WordBox word={x} classnames={wordError ? "error" : ""} />)}
 
@@ -126,7 +126,7 @@ const GameSection = () => {
                     <label>
                         <input type="text" onChange={handleChange} value={word} placeholder='Kelime Girin' />
                     </label>
-                </form>
+                </div>
             </div>
         </section>
     )
