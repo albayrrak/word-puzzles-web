@@ -32,20 +32,21 @@ const GameSection = () => {
 
 
     useEffect(() => {
+        const timerId = setInterval(() => {
+            setTimer((prevCount) => prevCount - 1);
+        }, 1000);
+       
         if (timer === 0) {
+            clearInterval(timerId);
             finishGame({ gameId: game.id }).then(res => {
-                console.log("test", res);
 
                 if (res.success) {
-                    clearInterval(timerId);
                     router.push("/")
                 }
             })
         };
 
-        const timerId = setInterval(() => {
-            setTimer((prevCount) => prevCount - 1);
-        }, 1000);
+
 
         return () => clearInterval(timerId);
     }, [timer]);
